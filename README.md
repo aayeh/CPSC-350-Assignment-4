@@ -8,3 +8,7 @@ resources
   -book, lectures, and stack overflow
 
 errors
+
+to run
+  - g++ *.cpp
+  -./a.out [filename.txt]
