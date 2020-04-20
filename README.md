@@ -11,4 +11,4 @@ errors
 
 to run
   - g++ *.cpp
-  -./a.out [filename.txt]
+  - ./a.out [filename.txt]
