@@ -19,12 +19,24 @@ Simulation::Simulation() {
 
     totalWindows = 0;
     totalStudents = 0;
+
+    windowArray = NULL;
+    idleArray = NULL;
+    medianArrary = NULL;
 }
 
 Simulation::~Simulation() {
-    delete windowArray;
-    delete idleArray;
-    delete medianArrary;
+    if (windowArray != NULL){
+      delete[] windowArray;
+    }
+    if (idleArray != NULL){
+      delete[] idleArray;
+
+    }
+    if (medianArrary != NULL){
+      delete[] medianArrary;
+
+    }
 }
 
 bool Simulation::importFile(string file) {
@@ -118,6 +130,7 @@ bool Simulation::timeTracker(int t) {
             //Increases when Student NOT at Window
             windowArray[i]->idleTime++;
         }
+        cout << windowArray[i]->idleTime << endl;
     }
 
     if(!studentQueue.isEmpty()) {
@@ -177,12 +190,16 @@ double Simulation::medianTime() {
 
         //Function from ALGORITHM Library - puts values into ASCENDING order
         sort(medianArrary, medianArrary + MAEC);
+        //For one in Array
+        if(MAEC == 1) {
+            return medianArrary[0];
+        }
         //For Odd Numbers
-        if(MAEC % 2 == 1) {
+        else if(MAEC % 2 == 1) {
             double d = 0;
             int r = 0;
 
-            r = (MAEC/2) + 1;
+            r = (MAEC/2);
             d = medianArrary[r];
 
             return d;
